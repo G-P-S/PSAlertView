@@ -136,7 +136,9 @@
     if (buttonIndex >= 0 && buttonIndex < [_blocks count]) {
         id obj = _blocks[buttonIndex];
         if (![obj isEqual:[NSNull null]]) {
-            ((void (^)())obj)(actionSheet, buttonIndex);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                ((void (^)())obj)(actionSheet, buttonIndex);
+            });
         }
     }
 

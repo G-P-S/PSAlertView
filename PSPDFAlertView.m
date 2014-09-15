@@ -60,11 +60,17 @@
 }
 
 - (id)initWithTitle:(NSString *)title {
-    return self = [self initWithTitle:title message:nil];
+    if ((self = [self initWithTitle:title message:nil])) {
+        _blocks = [[NSMutableArray alloc] init];
+    }
+    return self;
 }
 
 - (id)initWithTitle:(NSString *)title message:(NSString *)message {
-    return self = [super initWithTitle:title message:message delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+    if ((self = [super initWithTitle:title message:message delegate:self cancelButtonTitle:nil otherButtonTitles:nil])) {
+        _blocks = [[NSMutableArray alloc] init];
+    }
+    return self;
 }
 
 - (void)dealloc {
